@@ -1,0 +1,25 @@
+import express from 'express';
+import {
+  registerUser,
+  loginUser,
+  logoutUser,
+  getUserProfile,
+  updateUserProfile,
+  updatePassword,
+} from '../controllers/authController.js';
+import { protect } from '../middleware/authMiddleware.js';
+import { authLimiter } from '../middleware/rateLimiter.js';
+
+const router = express.Router();
+
+// Public routes with rate limiting
+router.post('/register', authLimiter, registerUser);
+router.post('/login', authLimiter, loginUser);
+router.post('/logout', logoutUser);
+
+// Protected routes
+router.get('/me', protect, getUserProfile);
+router.put('/profile', protect, updateUserProfile);
+router.put('/password', protect, updatePassword);
+
+export default router;

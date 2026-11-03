@@ -1,0 +1,25 @@
+{
+  "name": "spendwise-root",
+  "version": "1.0.0",
+  "description": "SpendWise - Personal Expense Tracker & Financial Analytics (Full Stack MERN)",
+  "private": true,
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "npm --prefix server run dev",
+    "client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build",
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+    "test": "node server/test_e2e.js"
+  },
+  "keywords": [
+    "mern",
+    "expense-tracker",
+    "spendwise",
+    "fintech",
+    "budget",
+    "recharts",
+    "tailwind"
+  ],
+  "author": "SpendWise Team",
+  "license": "ISC"
+}
