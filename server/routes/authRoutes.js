@@ -23,3 +23,4 @@ router.put('/profile', protect, updateUserProfile);
 router.put('/password', protect, updatePassword);
 
 export default router;
+

@@ -61,3 +61,4 @@ export const Navbar = ({ onOpenSidebar, onOpenAddTransaction, title = 'Dashboard
 };
 
 export default Navbar;
+

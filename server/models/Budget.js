@@ -45,3 +45,4 @@ budgetSchema.index(
 const Budget = mongoose.model('Budget', budgetSchema);
 
 export default Budget;
+

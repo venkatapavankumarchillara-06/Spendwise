@@ -47,3 +47,4 @@ export const Layout = ({ onOpenAddTransaction }) => {
 };
 
 export default Layout;
+

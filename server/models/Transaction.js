@@ -94,3 +94,4 @@ transactionSchema.index({ userId: 1, category: 1 });
 const Transaction = mongoose.model('Transaction', transactionSchema);
 
 export default Transaction;
+

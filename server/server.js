@@ -17,9 +17,6 @@ const __dirname = path.dirname(__filename);
 // Load environment variables from server/.env
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-// Connect to MongoDB
-connectDB();
-
 const app = express();
 
 // Security HTTP headers
@@ -97,14 +94,28 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-const server = app.listen(PORT, () => {
-  console.log(`[SpendWise Server]: Running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-});
+// Start HTTP server only after MongoDB connection succeeds
+const startServer = async () => {
+  try {
+    await connectDB();
 
-// Handle unhandled promise rejections gracefully
-process.on('unhandledRejection', (err) => {
-  console.error(`[Unhandled Rejection]: ${err.message}`);
-  server.close(() => process.exit(1));
-});
+    const server = app.listen(PORT, () => {
+      console.log(`[SpendWise Server]: Running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+    });
+
+    // Handle unhandled promise rejections gracefully
+    process.on('unhandledRejection', (err) => {
+      console.error(`[Unhandled Rejection]: ${err.message}`);
+      server.close(() => process.exit(1));
+    });
+
+    return server;
+  } catch (error) {
+    console.error(`[Server Startup Aborted]: Express server will not start without a valid MongoDB Atlas connection.`);
+    process.exit(1);
+  }
+};
+
+startServer();
 
 export default app;

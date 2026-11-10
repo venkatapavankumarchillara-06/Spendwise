@@ -515,3 +515,4 @@ export const Dashboard = ({ onOpenAddTransaction }) => {
 };
 
 export default Dashboard;
+

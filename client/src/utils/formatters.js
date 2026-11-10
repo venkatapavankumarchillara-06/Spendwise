@@ -55,3 +55,4 @@ export const formatDateForInput = (date = new Date()) => {
   const day = `${d.getDate()}`.padStart(2, '0');
   return `${d.getFullYear()}-${month}-${day}`;
 };
+

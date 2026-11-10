@@ -15,3 +15,4 @@ router.route('/').get(getBudgets).post(createBudget);
 router.route('/:id').put(updateBudget).delete(deleteBudget);
 
 export default router;
+

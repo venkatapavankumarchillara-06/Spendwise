@@ -32,3 +32,4 @@ export const FullPageLoader = () => {
 };
 
 export default LoadingSpinner;
+

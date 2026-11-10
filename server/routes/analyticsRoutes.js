@@ -13,3 +13,4 @@ router.get('/dashboard', getDashboardSummary);
 router.get('/', getAnalyticsData);
 
 export default router;
+

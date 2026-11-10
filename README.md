@@ -132,8 +132,8 @@ Create `server/.env` based on `server/.env.example`:
 PORT=5000
 NODE_ENV=development
 
-# Database Connection (Local or Atlas URI)
-MONGO_URI=mongodb://127.0.0.1:27017/spendwise
+# Database Connection (MongoDB Atlas URI)
+MONGO_URI=mongodb+srv://USERNAME:PASSWORD@CLUSTER_URL/spendwise?retryWrites=true&w=majority
 
 # JWT Secret & Expiry
 JWT_SECRET=spendwise_super_secure_jwt_secret_key_prod_ready_2026!
@@ -281,3 +281,4 @@ This verifies:
 
 ## 📄 License
 This project is licensed under the ISC License.
+
