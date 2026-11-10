@@ -45,7 +45,14 @@ export const Register = () => {
       showToast('Registration successful! Welcome to SpendWise.', 'success');
       navigate('/dashboard', { replace: true });
     } catch (err) {
-      const msg = err.response?.data?.message || 'Registration failed. Please try again.';
+      let msg = err.response?.data?.message;
+      if (!msg) {
+        if (err.message === 'Network Error' || !err.response) {
+          msg = 'Unable to reach backend server. If Render backend was asleep, please wait 30 seconds and try again. Also ensure VITE_API_URL is configured in Vercel.';
+        } else {
+          msg = err.message || 'Registration failed. Please try again.';
+        }
+      }
       setError(msg);
       showToast(msg, 'error');
     } finally {
